@@ -1,0 +1,27 @@
+{
+  "name": "wp-theme-webpack-starter",
+  "version": "1.0.0",
+  "description": "WordPress theme Webpack starter",
+  "private": true,
+  "author": "Daniel Scicluna",
+  "repository": "https://github.com/xikky/wp-theme-webpack-starter",
+  "license": "MIT",
+  "scripts": {
+    "serve": "webpack",
+    "start": "webpack-dev-server --open"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "3.0.0",
+    "css-loader": "3.5.3",
+    "file-loader": "6.0.0",
+    "mini-css-extract-plugin": "0.9.0",
+    "node-sass": "4.14.1",
+    "sass-loader": "8.0.2",
+    "style-loader": "1.2.1",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.11.0",
+    "webpack-fix-style-only-entries": "0.4.0"
+  },
+  "dependencies": {}
+}
