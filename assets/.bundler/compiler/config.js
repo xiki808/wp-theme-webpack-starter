@@ -1,29 +1,42 @@
+const path = require("path");
+
 module.exports = {
-  context: __dirname,
+  //context path is assets
+  context: path.resolve(process.cwd()),
   devtool: "eval-cheap-source-map",
-  outputDirectory: path.resolve(__dirname, "../src/"),
-  files: [
+  outputDirectory: path.resolve(process.cwd(), "../src/"),
+  layers: [
     {
-      entry: "../front/scripts/header.js",
-      output: "front/header.js",
+      end: "front",
+      files: [
+        {
+          entry: "../front/styles/style.scss",
+        },
+        {
+          entry: "../front/scripts/header.js",
+          output: "front/header.js",
+        },
+        {
+          entry: "../front/scripts/footer.js",
+          output: "front/footer.js",
+        },
+      ],
     },
     {
-      entry: "../front/scripts/footer.js",
-      output: "front/footer.js",
-    },
-    {
-      entry: "../front/styles/style.scss",
-    },
-    {
-      entry: "../back/scripts/header.js",
-      output: "back/header.js",
-    },
-    {
-      entry: "../back/scripts/footer.js",
-      output: "back/footer.js",
-    },
-    {
-      entry: "../back/styles/style.scss",
+      end: "back",
+      files: [
+        {
+          entry: "../back/styles/style.scss",
+        },
+        {
+          entry: "../back/scripts/header.js",
+          output: "back/header.js",
+        },
+        {
+          entry: "../back/scripts/footer.js",
+          output: "back/footer.js",
+        },
+      ],
     },
   ],
 };
