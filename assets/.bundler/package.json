@@ -7,7 +7,7 @@
   "repository": "https://github.com/xikky/wp-theme-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "serve": "webpack",
+    "serve": "webpack --mode=development",
     "start": "webpack-dev-server --open"
   },
   "devDependencies": {
