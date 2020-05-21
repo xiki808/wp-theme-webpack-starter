@@ -104,5 +104,6 @@ module.exports = (a, b) => {
       new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
+    ],
   };
 };
