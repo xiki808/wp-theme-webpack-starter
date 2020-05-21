@@ -32,7 +32,7 @@ module.exports = {
       },
     ];
   },
-  fileLoader(end) {
+  fileLoader() {
     return [
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -40,7 +40,7 @@ module.exports = {
         options: {
           name: "[name].[ext]",
           context: config.context,
-          outputPath: `${end}/images/`,
+          outputPath: `/images/`,
         },
       },
       {
@@ -49,7 +49,7 @@ module.exports = {
         options: {
           name: "[name].[ext]",
           context: config.context,
-          outputPath: `${end}/fonts/`,
+          outputPath: `/fonts/`,
         },
       },
       {
@@ -58,7 +58,7 @@ module.exports = {
         options: {
           name: "[name].[ext]",
           context: config.context,
-          outputPath: `${end}/svg/`,
+          outputPath: `/svg/`,
         },
       },
     ];

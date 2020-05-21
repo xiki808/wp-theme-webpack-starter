@@ -1,24 +1,46 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 const path = require("path");
-module.exports = (env, args) => {
+module.exports = (a, b) => {
   return {
-    mode: args.mode,
-    context: path.resolve(process.cwd()),
+    mode: b ? b.mode : a.mode,
+    context: path.resolve(__dirname),
     devtool: "eval-cheap-source-map",
+    target: "web",
     entry: {
-      "front/scripts/header": "../front/scripts/header.js",
-      "front/scripts/footer": "../front/scripts/footer.js",
-      "front/styles": "../front/styles/style.scss",
-      "back/scripts/header": "../back/scripts/header.js",
-      "back/scripts/footer": "../back/scripts/footer.js",
-      "back/styles": "../back/styles/style.scss",
+      "front/scripts/header": [
+        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "../front/scripts/header.js",
+      ],
+      "front/scripts/footer": [
+        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "../front/scripts/footer.js",
+      ],
+      "front/styles": [
+        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "../front/styles/style.scss",
+      ],
+      "back/scripts/header": [
+        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "../back/scripts/header.js",
+      ],
+      "back/scripts/footer": [
+        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "../back/scripts/footer.js",
+      ],
+      "back/styles": [
+        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "../back/styles/style.scss",
+      ],
     },
     output: {
-      path: path.resolve(process.cwd(), "../src/"),
-      filename: "../src/[name].js",
+      path: path.resolve(__dirname, "../src/"),
+      filename: "[name].js",
+      //point to theme folder
+      publicPath: "../../",
     },
     module: {
       rules: [
@@ -50,8 +72,8 @@ module.exports = (env, args) => {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            context: path.resolve(process.cwd()),
-            outputPath: `/images/`,
+            outputPath: "images/",
+            context: path.resolve(__dirname, "../src/images/"),
           },
         },
         {
@@ -59,8 +81,8 @@ module.exports = (env, args) => {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            context: path.resolve(process.cwd()),
-            outputPath: `/fonts/`,
+            outputPath: "fonts/",
+            publicPath: "../../fonts/",
           },
         },
         {
@@ -68,8 +90,8 @@ module.exports = (env, args) => {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            context: path.resolve(process.cwd()),
-            outputPath: `/svg/`,
+            outputPath: "svg/",
+            publicPath: "../../svg/",
           },
         },
       ],
@@ -78,13 +100,9 @@ module.exports = (env, args) => {
       new FixStyleOnlyEntriesPlugin(),
       new MiniCssExtractPlugin({
         filename: `[name]/style.css`,
-        // Up one level into the assets directory
-        publicPath: "../",
       }),
-      new CleanWebpackPlugin(),
-    ],
-    devServer: {
-      contentBase: "../src",
-    },
+      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
   };
 };
