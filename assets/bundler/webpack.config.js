@@ -4,35 +4,37 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 const path = require("path");
-module.exports = (a, b) => {
+module.exports = (options) => {
+  options = {};
+  options.mode = "development";
   return {
-    mode: b ? b.mode : a.mode,
+    mode: options.mode,
     context: path.resolve(__dirname),
-    devtool: "eval-cheap-source-map",
+    devtool: options.mode === "development" && "eval-cheap-source-map",
     target: "web",
     entry: {
+      "front/styles/style": [
+        "webpack-hot-middleware/client?reload=true",
+        "../front/styles/style.scss",
+      ],
       "front/scripts/header": [
-        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "webpack-hot-middleware/client?reload=true",
         "../front/scripts/header.js",
       ],
       "front/scripts/footer": [
-        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "webpack-hot-middleware/client?reload=true",
         "../front/scripts/footer.js",
       ],
-      "front/styles": [
-        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
-        "../front/styles/style.scss",
-      ],
       "back/scripts/header": [
-        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "webpack-hot-middleware/client?reload=true",
         "../back/scripts/header.js",
       ],
       "back/scripts/footer": [
-        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+        "webpack-hot-middleware/client?reload=true",
         "../back/scripts/footer.js",
       ],
-      "back/styles": [
-        "webpack-hot-middleware/client?path=__webpack_hmr&reload=true",
+      "back/styles/style": [
+        "webpack-hot-middleware/client?reload=true",
         "../back/styles/style.scss",
       ],
     },
@@ -40,7 +42,7 @@ module.exports = (a, b) => {
       path: path.resolve(__dirname, "../src/"),
       filename: "[name].js",
       //point to theme folder
-      publicPath: "../../",
+      publicPath: "/wp-content/themes/wp-theme-webpack-starter/assets/src/",
     },
     module: {
       rules: [
@@ -52,6 +54,12 @@ module.exports = (a, b) => {
             {
               // Extract CSS into separate files. Replaces style-loader
               loader: MiniCssExtractPlugin.loader,
+              options: {
+                // only enable hot in development
+                hmr: options.mode === "development",
+                // if hmr does not work, this is a forceful method.
+                reloadAll: true,
+              },
               // loader: "style-loader",
             },
             {
@@ -97,9 +105,9 @@ module.exports = (a, b) => {
       ],
     },
     plugins: [
-      new FixStyleOnlyEntriesPlugin(),
+      // new FixStyleOnlyEntriesPlugin(),
       new MiniCssExtractPlugin({
-        filename: `[name]/style.css`,
+        filename: `[name].css`,
       }),
       new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
       new webpack.HotModuleReplacementPlugin(),
