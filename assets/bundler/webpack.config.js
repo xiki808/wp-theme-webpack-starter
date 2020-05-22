@@ -1,16 +1,15 @@
+const path = require("path");
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
-const path = require("path");
 module.exports = (options) => {
-  options = {};
-  options.mode = "development";
   return {
     mode: options.mode,
     context: path.resolve(__dirname),
-    devtool: options.mode === "development" && "eval-cheap-source-map",
+    devtool: options.mode === "development" ? "eval-cheap-source-map" : false,
     target: "web",
     entry: {
       "front/styles/style": [
@@ -41,7 +40,6 @@ module.exports = (options) => {
     output: {
       path: path.resolve(__dirname, "../src/"),
       filename: "[name].js",
-      //point to theme folder
       publicPath: "/wp-content/themes/wp-theme-webpack-starter/assets/src/",
     },
     module: {
@@ -49,29 +47,19 @@ module.exports = (options) => {
         {
           test: /\.s(a|c)ss$/,
           // Loaders are loaded in revers, from bottom up
-          // array of objects can be replaced to just a list array if no option are passed
           loader: [
             {
-              // Extract CSS into separate files. Replaces style-loader
-              loader: MiniCssExtractPlugin.loader,
+              loader: MiniCssExtractPlugin.loader, // Extract CSS into separate files. Replaces style-loader
               options: {
-                // only enable hot in development
-                hmr: options.mode === "development",
-                // if hmr does not work, this is a forceful method.
-                reloadAll: true,
+                hmr: options.mode === "development", // Only enable HMR in development
+                reloadAll: options.mode === "development", // If HMR does not work, this is a forceful method.
               },
-              // loader: "style-loader",
             },
             {
-              // Resolves @import and url()
-              loader: "css-loader",
+              loader: "css-loader", // Resolves @import and url
             },
-            // {
-            //   loader: "resolve-url-loader",
-            // },
             {
-              // Loads Sass files and compiles them to CSS
-              loader: "sass-loader",
+              loader: "sass-loader", // Loads Sass files and compiles them to CSS
             },
           ],
         },
@@ -105,11 +93,15 @@ module.exports = (options) => {
       ],
     },
     plugins: [
-      // new FixStyleOnlyEntriesPlugin(),
+      ...(options.mode !== "development"
+        ? // Clean the JS file created by MiniCssExtractPlugin after extracting CSS
+          // Keep for development mode to allow SCSS HMR
+          [new FixStyleOnlyEntriesPlugin()]
+        : []),
       new MiniCssExtractPlugin({
         filename: `[name].css`,
       }),
-      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+      new CleanWebpackPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
     ],

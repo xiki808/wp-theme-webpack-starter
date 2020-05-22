@@ -7,10 +7,8 @@
   "repository": "https://github.com/xikky/wp-theme-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "serve": "node compiler/serve --mode=development",
-    "watch": "webpack --watch",
-    "dev": "webpack --mode=development",
-    "start": "webpack-dev-server --mode=development"
+    "serve": "node compiler/serve",
+    "build": "node compiler/build"
   },
   "devDependencies": {
     "browser-sync": "2.26.7",
