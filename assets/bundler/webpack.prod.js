@@ -9,9 +9,9 @@ module.exports = {
     "front/styles/style": "../front/styles/style.scss",
     "front/scripts/header": "../front/scripts/header.js",
     "front/scripts/footer": "../front/scripts/footer.js",
+    "back/styles/style": "../back/styles/style.scss",
     "back/scripts/header": "../back/scripts/header.js",
     "back/scripts/footer": "../back/scripts/footer.js",
-    "back/styles/style": "../back/styles/style.scss",
   },
   module: {
     rules: [

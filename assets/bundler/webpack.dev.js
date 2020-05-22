@@ -17,6 +17,10 @@ module.exports = {
       "webpack-hot-middleware/client?reload=true",
       "../front/scripts/footer.js",
     ],
+    "back/styles/style": [
+      "webpack-hot-middleware/client?reload=true",
+      "../back/styles/style.scss",
+    ],
     "back/scripts/header": [
       "webpack-hot-middleware/client?reload=true",
       "../back/scripts/header.js",
@@ -24,10 +28,6 @@ module.exports = {
     "back/scripts/footer": [
       "webpack-hot-middleware/client?reload=true",
       "../back/scripts/footer.js",
-    ],
-    "back/styles/style": [
-      "webpack-hot-middleware/client?reload=true",
-      "../back/styles/style.scss",
     ],
   },
   module: {
