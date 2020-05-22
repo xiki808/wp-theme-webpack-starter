@@ -1,16 +1,19 @@
 const browserSync = require("browser-sync");
 const webpack = require("webpack");
+const merge = require("webpack-merge");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
 
-const webpackConfig = require("../webpack.config");
+const devConfig = require("../webpack.dev");
+const commonConfig = require("../webpack.common");
+const config = merge(commonConfig, devConfig);
 
-const compiler = webpack(webpackConfig({ mode: "development" }));
+const compiler = webpack(config);
 
 browserSync({
   middleware: [
     webpackDevMiddleware(compiler, {
-      publicPath: webpackConfig({ mode: "development" }).output.publicPath, // The path where to bind the middleware to the server
+      publicPath: config.output.publicPath, // The path where to bind the middleware to the server
       stats: { colors: true },
       logLevel: "silent",
     }),
