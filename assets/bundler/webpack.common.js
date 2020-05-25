@@ -15,12 +15,17 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader", // transpile modern JS for old browsers
-          options: {
-            presets: ["@babel/preset-env"],
+        use: [
+          {
+            loader: "cache-loader",
           },
-        },
+          {
+            loader: "babel-loader", // transpile modern JS for old browsers
+            options: {
+              presets: ["@babel/preset-env"],
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -56,29 +61,6 @@ module.exports = {
   },
   context: path.resolve(__dirname),
   target: "web",
-  // optimization: {
-  //   splitChunks: {
-  //     name: "base",
-  //   },
-  // },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        // Split vendor code to its own chunk(s)
-        vendors: {
-          name: "vendor",
-          chunks: "all",
-          test: /[\\/]node_modules[\\/]/i,
-        },
-      },
-    },
-    // The runtime should be in its own chunk
-    // This saves some common JS since we have multiple entries
-    // runtimeChunk is the webpack JS code used to load modules
-    runtimeChunk: {
-      name: "runtime",
-    },
-  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: `[name].css`,

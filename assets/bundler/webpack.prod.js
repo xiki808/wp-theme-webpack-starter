@@ -32,6 +32,24 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        // Split vendor code to its own chunk(s)
+        vendors: {
+          name: "vendor",
+          chunks: "all",
+          test: /[\\/]node_modules[\\/]/i,
+        },
+      },
+    },
+    // The runtime should be in its own chunk
+    // This saves some common JS since we have multiple entries
+    // runtimeChunk is the webpack JS code used to load modules
+    runtimeChunk: {
+      name: "runtime",
+    },
+  },
   plugins: [
     // Clean the JS file created by MiniCssExtractPlugin after extracting CSS
     // Keep for development mode to allow SCSS HMR

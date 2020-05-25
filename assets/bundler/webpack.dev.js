@@ -6,27 +6,27 @@ module.exports = {
   mode: "development",
   entry: {
     "front/styles/style": [
-      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
+      "webpack-hot-middleware/client?noInfo=true",
       "../front/styles/style.scss",
     ],
     "front/scripts/header": [
-      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
+      "webpack-hot-middleware/client?noInfo=true",
       "../front/scripts/header.js",
     ],
     "front/scripts/footer": [
-      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
+      "webpack-hot-middleware/client?noInfo=true",
       "../front/scripts/footer.js",
     ],
     "back/styles/style": [
-      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
+      "webpack-hot-middleware/client?noInfo=true",
       "../back/styles/style.scss",
     ],
     "back/scripts/header": [
-      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
+      "webpack-hot-middleware/client?noInfo=true",
       "../back/scripts/header.js",
     ],
     "back/scripts/footer": [
-      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
+      "webpack-hot-middleware/client?noInfo=true",
       "../back/scripts/footer.js",
     ],
   },
@@ -36,6 +36,9 @@ module.exports = {
         test: /\.s(a|c)ss$/,
         // Loaders are loaded in revers, from bottom up
         loader: [
+          {
+            loader: "cache-loader",
+          },
           {
             loader: MiniCssExtractPlugin.loader, // Extract CSS into separate files. Replaces style-loader
             options: {
