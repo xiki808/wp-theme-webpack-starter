@@ -15,8 +15,7 @@ browserSync.init({
   middleware: [
     webpackDevMiddleware(compiler, {
       publicPath: config.output.publicPath, // The path where to bind the middleware to the server
-      stats: { colors: true },
-      logLevel: "silent",
+      logLevel: "error",
     }),
     webpackHotMiddleware(compiler, {
       path: "/__webpack_hmr",

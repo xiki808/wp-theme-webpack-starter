@@ -6,27 +6,27 @@ module.exports = {
   mode: "development",
   entry: {
     "front/styles/style": [
-      "webpack-hot-middleware/client?reload=true&noInfo=true",
+      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
       "../front/styles/style.scss",
     ],
     "front/scripts/header": [
-      "webpack-hot-middleware/client?reload=true&noInfo=true",
+      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
       "../front/scripts/header.js",
     ],
     "front/scripts/footer": [
-      "webpack-hot-middleware/client?reload=true&noInfo=true",
+      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
       "../front/scripts/footer.js",
     ],
     "back/styles/style": [
-      "webpack-hot-middleware/client?reload=true&noInfo=true",
+      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
       "../back/styles/style.scss",
     ],
     "back/scripts/header": [
-      "webpack-hot-middleware/client?reload=true&noInfo=true",
+      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
       "../back/scripts/header.js",
     ],
     "back/scripts/footer": [
-      "webpack-hot-middleware/client?reload=true&noInfo=true",
+      "webpack-hot-middleware/client?reload=true&overlay=false&noInfo=true",
       "../back/scripts/footer.js",
     ],
   },
@@ -59,7 +59,7 @@ module.exports = {
       },
     ],
   },
-  devtool: "cheap-source-map",
+  devtool: "source-map",
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
