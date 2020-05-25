@@ -40,6 +40,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    modules: [path.resolve(__dirname, "node_modules")],
+  },
   context: path.resolve(__dirname),
   target: "web",
   plugins: [
