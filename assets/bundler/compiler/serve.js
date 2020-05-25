@@ -19,7 +19,6 @@ browserSync.init({
       logLevel: "silent",
     }),
     webpackHotMiddleware(compiler, {
-      log: console.log,
       path: "/__webpack_hmr",
       heartbeat: 10 * 1000,
     }),

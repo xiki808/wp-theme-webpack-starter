@@ -6,27 +6,27 @@ module.exports = {
   mode: "development",
   entry: {
     "front/styles/style": [
-      "webpack-hot-middleware/client?reload=true",
+      "webpack-hot-middleware/client?reload=true&noInfo=true",
       "../front/styles/style.scss",
     ],
     "front/scripts/header": [
-      "webpack-hot-middleware/client?reload=true",
+      "webpack-hot-middleware/client?reload=true&noInfo=true",
       "../front/scripts/header.js",
     ],
     "front/scripts/footer": [
-      "webpack-hot-middleware/client?reload=true",
+      "webpack-hot-middleware/client?reload=true&noInfo=true",
       "../front/scripts/footer.js",
     ],
     "back/styles/style": [
-      "webpack-hot-middleware/client?reload=true",
+      "webpack-hot-middleware/client?reload=true&noInfo=true",
       "../back/styles/style.scss",
     ],
     "back/scripts/header": [
-      "webpack-hot-middleware/client?reload=true",
+      "webpack-hot-middleware/client?reload=true&noInfo=true",
       "../back/scripts/header.js",
     ],
     "back/scripts/footer": [
-      "webpack-hot-middleware/client?reload=true",
+      "webpack-hot-middleware/client?reload=true&noInfo=true",
       "../back/scripts/footer.js",
     ],
   },
