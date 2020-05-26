@@ -1,5 +1,3 @@
-const path = require("path");
-
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -15,6 +13,21 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: "cache-loader",
+          },
+          {
+            loader: "babel-loader", // transpile modern JS for old browsers
+            options: {
+              presets: ["@babel/preset-env"],
+            },
+          },
+        ],
+      },
       {
         test: /\.s(a|c)ss$/,
         // Loaders are loaded in revers, from bottom up

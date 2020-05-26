@@ -7,26 +7,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "../src/"),
     filename: "[name].js",
-    chunkFilename: "[name].js",
     publicPath: "/wp-content/themes/wp-theme-webpack-starter/assets/src/",
   },
   module: {
     rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: "cache-loader",
-          },
-          {
-            loader: "babel-loader", // transpile modern JS for old browsers
-            options: {
-              presets: ["@babel/preset-env"],
-            },
-          },
-        ],
-      },
       {
         test: /\.(png|jpe?g|gif)$/i,
         loader: "file-loader",
