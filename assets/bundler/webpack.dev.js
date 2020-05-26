@@ -37,14 +37,14 @@ module.exports = {
         // Loaders are loaded in revers, from bottom up
         loader: [
           {
-            loader: "cache-loader",
-          },
-          {
             loader: MiniCssExtractPlugin.loader, // Extract CSS into separate files. Replaces style-loader
             options: {
               hmr: true, // Only enable HMR in development
               reloadAll: true, // If HMR does not work, this is a forceful method.
             },
+          },
+          {
+            loader: "cache-loader",
           },
           {
             loader: "css-loader", // Resolves import and url
