@@ -1,3 +1,5 @@
+const { assetsPublicFolder, proxyTarget, watchFiles } = require("../config");
+
 const browserSync = require("browser-sync").create();
 const webpack = require("webpack");
 const merge = require("webpack-merge");
@@ -24,8 +26,8 @@ browserSync.init({
   ],
   host: "localhost",
   port: 3000,
-  files: ["../../**/*.php", "!../../assets"], // Monitor changes under theme folder, exclude assets directory
-  proxy: { target: "http://new.loc/" }, // Proxy target to virtual host
+  files: watchFiles, // Monitor changes under theme folder, exclude assets directory
+  proxy: { target: proxyTarget }, // Proxy target to virtual host
   notify: false,
   loglevel: "silent",
   snippetOptions: {
@@ -33,8 +35,8 @@ browserSync.init({
     rule: {
       match: /<\/head>/i,
       fn: function (snippet, match) {
-        return `<script src="//localhost:3000/wp-content/themes/wp-theme-webpack-starter/assets/src/front/styles/style.js"></script>
-        <script src="//localhost:3000/wp-content/themes/wp-theme-webpack-starter/assets/src/back/styles/style.js"></script>${snippet}${match}`;
+        return `<script src="//localhost:3000${assetsPublicFolder}front/styles/style.js"></script>
+        <script src="//localhost:3000${assetsPublicFolder}back/styles/style.js"></script>${snippet}${match}`;
       },
     },
   },

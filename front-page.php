@@ -9,5 +9,5 @@ get_footer();
 <div class="svg"></div>
 <i class="feature-box__icon icon-basic-test"></i>
 <div class="img"></div>
-<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/bass.jpg">
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/images/bass.jpg">
 <span class="fontme">hello there!</span>

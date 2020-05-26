@@ -1,35 +1,21 @@
+const { entries, hmrPathParams, devtool } = require("./config");
+
 const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+let entryList = {};
+
+for (const entry of entries) {
+  entryList[entry.target] = [
+    `webpack-hot-middleware/client?${hmrPathParams}`,
+    entry.source,
+  ];
+}
+
 module.exports = {
   mode: "development",
-  entry: {
-    "front/styles/style": [
-      "webpack-hot-middleware/client?noInfo=true",
-      "../front/styles/style.scss",
-    ],
-    "front/scripts/header": [
-      "webpack-hot-middleware/client?noInfo=true",
-      "../front/scripts/header.js",
-    ],
-    "front/scripts/footer": [
-      "webpack-hot-middleware/client?noInfo=true",
-      "../front/scripts/footer.js",
-    ],
-    "back/styles/style": [
-      "webpack-hot-middleware/client?noInfo=true",
-      "../back/styles/style.scss",
-    ],
-    "back/scripts/header": [
-      "webpack-hot-middleware/client?noInfo=true",
-      "../back/scripts/header.js",
-    ],
-    "back/scripts/footer": [
-      "webpack-hot-middleware/client?noInfo=true",
-      "../back/scripts/footer.js",
-    ],
-  },
+  entry: entryList,
   module: {
     rules: [
       {
@@ -62,7 +48,7 @@ module.exports = {
       },
     ],
   },
-  devtool: "source-map",
+  devtool: devtool,
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

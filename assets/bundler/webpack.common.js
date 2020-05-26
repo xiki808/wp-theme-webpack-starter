@@ -1,3 +1,11 @@
+const {
+  assetsTargetFolder,
+  assetsPublicFolder,
+  imagesPublicFolder,
+  fontsPublicFolder,
+  svgPublicFolder,
+} = require("./config");
+
 const path = require("path");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -5,9 +13,9 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, "../src/"),
+    path: path.resolve(__dirname, assetsTargetFolder),
     filename: "[name].js",
-    publicPath: "/wp-content/themes/wp-theme-webpack-starter/assets/src/",
+    publicPath: assetsPublicFolder,
   },
   module: {
     rules: [
@@ -16,8 +24,8 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "images/",
-          context: path.resolve(__dirname, "../src/images/"),
+          outputPath: imagesPublicFolder,
+          publicPath: `${assetsPublicFolder}${imagesPublicFolder}`,
         },
       },
       {
@@ -25,8 +33,8 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "fonts/",
-          publicPath: "../../fonts/",
+          outputPath: fontsPublicFolder,
+          publicPath: `${assetsPublicFolder}${fontsPublicFolder}`,
         },
       },
       {
@@ -34,8 +42,8 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "svg/",
-          publicPath: "../../svg/",
+          outputPath: svgPublicFolder,
+          publicPath: `${assetsPublicFolder}${svgPublicFolder}`,
         },
       },
     ],
