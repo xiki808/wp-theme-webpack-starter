@@ -4,9 +4,11 @@ const {
   imagesPublicFolder,
   fontsPublicFolder,
   svgPublicFolder,
+  moduleAlias,
 } = require("./config");
 
 const path = require("path");
+const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -58,5 +60,6 @@ module.exports = {
       filename: `[name].css`,
     }),
     new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin(moduleAlias),
   ],
 };
