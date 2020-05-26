@@ -1,11 +1,11 @@
-const { entry } = require("./config");
+const { entries, getEntries } = require("./config");
 
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
-  entry: entry,
+  entry: getEntries(entries),
   module: {
     rules: [
       {

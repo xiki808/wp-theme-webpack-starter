@@ -1,21 +1,12 @@
-const { entries, hmrPathParams, devtool } = require("./config");
+const { entries, hmrPathParams, devtool, getEntries } = require("./config");
 
 const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-let entryList = {};
-
-for (const entry of entries) {
-  entryList[entry.target] = [
-    `webpack-hot-middleware/client?${hmrPathParams}`,
-    entry.source,
-  ];
-}
-
 module.exports = {
   mode: "development",
-  entry: entryList,
+  entry: getEntries(entries, hmrPathParams, true),
   module: {
     rules: [
       {

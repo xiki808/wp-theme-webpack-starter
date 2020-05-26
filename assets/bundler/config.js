@@ -23,4 +23,19 @@ module.exports = {
   hmrPathParams: "noInfo=true", // The query strings parameters attached to the hmr url
   devtool: "source-map",
   watchFiles: ["../../**/*.php", "!../../assets"], // Files BrowserSync will watch. Use '!' to exclude.
+  // Aliases set for a module will be available in the JS file without the need to import.
+  moduleAlias: {
+    _: "lodash",
+  },
+  getEntries: (entries, hmrPathParams = "", dev = false) => {
+    let entryList = {};
+
+    for (const entry of entries) {
+      entryList[entry.target] = dev
+        ? [`webpack-hot-middleware/client?${hmrPathParams}`, entry.source]
+        : entry.source;
+    }
+
+    return entryList;
+  },
 };
