@@ -10,42 +10,32 @@ const compiler = webpack(config);
 compiler.run((err, stats) => {
   if (err) {
     console.error(err.stack || err);
-
     if (err.details) {
       console.error(err.details);
     }
-    return;
-  }
-
-  if (stats.hasErrors()) {
-    console.error(
-      stats.toString({
-        all: false,
-        colors: true,
-        errors: true,
-      })
-    );
 
     return;
-  }
-
-  if (stats.hasWarnings()) {
-    console.warn(
-      stats.toString({
-        all: false,
-        colors: true,
-        errors: true,
-      })
-    );
   }
 
   console.log(
     stats.toString({
+      assets: true,
+      assetSort: "size",
+      builtAt: false,
       colors: true,
       chunks: false,
-      modules: false,
+      chunkGroups: false,
       entrypoints: false,
-      children: false,
+      errors: true,
+      errorDetails: false,
+      errorStack: false,
+      hash: false,
+      logging: "none",
+      modules: false,
+      publicPath: false,
+      timings: true,
+      version: false,
+      warnings: true,
     })
   );
 });
