@@ -19,8 +19,8 @@ class Init
      */
     private function define_hooks()
     {
-        add_action('wp_enqueue_scripts', array(new Enqueue(), 'front_enqueue'));
-        add_action('admin_enqueue_scripts', array(new Enqueue(), 'admin_enqueue'));
+        add_action('wp_enqueue_scripts', [new Enqueue(), 'front_enqueue']);
+        add_action('admin_enqueue_scripts', [new Enqueue(), 'admin_enqueue']);
     }
 
     /**
