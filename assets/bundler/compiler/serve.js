@@ -35,8 +35,8 @@ browserSync.init({
     rule: {
       match: /<\/head>/i,
       fn: function (snippet, match) {
-        return `<script src="//localhost:3000${assetsPublicFolder}front/styles/style.js"></script>
-        <script src="//localhost:3000${assetsPublicFolder}back/styles/style.js"></script>${snippet}${match}`;
+        return `<script src="//localhost:3000${assetsPublicFolder}css/front/style.js"></script>
+        <script src="//localhost:3000${assetsPublicFolder}css/back/style.js"></script>${snippet}${match}`;
       },
     },
   },
