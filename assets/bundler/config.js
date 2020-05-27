@@ -29,6 +29,25 @@ module.exports = {
     // _: "lodash",
     // $: "jquery",
   },
+  // Webpack stat configuration for both envs
+  logStats: {
+    dev: {
+      all: false,
+      colors: true,
+      errors: true,
+      warnings: true,
+    },
+    prod: {
+      all: false,
+      assets: true,
+      assetSort: "size",
+      colors: true,
+      errors: true,
+      logging: "none",
+      timings: true,
+      warnings: true,
+    },
+  },
   // Used to arrange the 'entries' array to fit in webpack config
   getEntries: (entries, hmrPathParams = "", dev = false) => {
     let entryList = {};

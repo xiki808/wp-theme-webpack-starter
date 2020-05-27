@@ -1,4 +1,9 @@
-const { assetsPublicFolder, proxyTarget, watchFiles } = require("../config");
+const {
+  logStats,
+  assetsPublicFolder,
+  proxyTarget,
+  watchFiles,
+} = require("../config");
 
 const browserSync = require("browser-sync").create();
 const webpack = require("webpack");
@@ -18,12 +23,7 @@ browserSync.init({
     webpackDevMiddleware(compiler, {
       publicPath: config.output.publicPath, // The path where to bind the middleware to the server
       logLevel: "error",
-      stats: {
-        all: false,
-        colors: true,
-        errors: true,
-        warnings: true,
-      },
+      stats: logStats.dev,
     }),
     webpackHotMiddleware(compiler, {
       path: "/__webpack_hmr",

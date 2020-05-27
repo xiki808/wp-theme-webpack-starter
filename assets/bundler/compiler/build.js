@@ -1,3 +1,5 @@
+const { logStats } = require("../config");
+
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 
@@ -17,16 +19,5 @@ compiler.run((err, stats) => {
     return;
   }
 
-  console.log(
-    stats.toString({
-      all: false,
-      assets: true,
-      assetSort: "size",
-      colors: true,
-      errors: true,
-      logging: "none",
-      timings: true,
-      warnings: true,
-    })
-  );
+  console.log(stats.toString(logStats.prod));
 });
