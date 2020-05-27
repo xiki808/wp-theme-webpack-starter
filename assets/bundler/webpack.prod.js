@@ -34,6 +34,14 @@ module.exports = {
             loader: "css-loader", // Resolves import and url
           },
           {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: "postcss.config.js",
+              },
+            },
+          },
+          {
             loader: "sass-loader", // Loads Sass files and compiles them to CSS
           },
         ],

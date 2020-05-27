@@ -1,0 +1,16 @@
+$color: blue;
+
+@mixin autoprefixer-test {
+  user-select: none;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "left-block right-block";
+}
+
+.autoprefixer-test {
+  @include autoprefixer-test;
+  color: $color;
+}

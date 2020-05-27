@@ -6,6 +6,7 @@ get_sidebar();
 
 get_footer();
 ?>
+<button>hello</button>
 <div class="svg"></div>
 <i class="feature-box__icon icon-basic-test"></i>
 <div class="img"></div>
