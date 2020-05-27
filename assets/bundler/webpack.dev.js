@@ -43,6 +43,12 @@ module.exports = {
               sourceMap: true,
             },
           },
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: ["../scss/globals/*.scss"],
+            },
+          },
         ],
       },
     ],

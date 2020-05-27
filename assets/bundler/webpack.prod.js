@@ -44,6 +44,12 @@ module.exports = {
           {
             loader: "sass-loader", // Loads Sass files and compiles them to CSS
           },
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: ["../scss/globals/*.scss"],
+            },
+          },
         ],
       },
     ],
