@@ -25,7 +25,7 @@ module.exports = {
   watchFiles: ["../../**/*.php", "!../../assets"], // Files BrowserSync will watch. Use '!' to exclude.
   // Aliases set for a module will be available in the JS file without the need to import.
   moduleAlias: {
-    _: "lodash",
+    // Example -  _: "lodash",
   },
   getEntries: (entries, hmrPathParams = "", dev = false) => {
     let entryList = {};
