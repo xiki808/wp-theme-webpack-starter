@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "WordPress theme Webpack starter",
   "private": true,
-  "author": "Daniel Scicluna",
-  "repository": "https://github.com/xikky/wp-theme-webpack-starter",
+  "author": "xiki808",
+  "repository": "https://github.com/xiki808/wp-theme-webpack-starter",
   "license": "MIT",
   "browserslist": {
     "production": [
