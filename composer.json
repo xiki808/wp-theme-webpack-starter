@@ -1,0 +1,11 @@
+{
+  "name": "xiki808/wp-theme-webpack-starter",
+  "description": "A WordPress theme starter to use as a starting template to build a custom theme using namespaces and webpack.",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "WTWS\\": "Includes"
+    }
+  },
+  "require": {}
+}

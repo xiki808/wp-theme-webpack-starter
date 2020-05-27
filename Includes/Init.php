@@ -1,6 +1,6 @@
 <?php
 
-namespace WTS;
+namespace WTWS;
 
 class Init
 {
