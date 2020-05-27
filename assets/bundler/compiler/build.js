@@ -19,22 +19,13 @@ compiler.run((err, stats) => {
 
   console.log(
     stats.toString({
+      all: false,
       assets: true,
       assetSort: "size",
-      builtAt: false,
       colors: true,
-      chunks: false,
-      chunkGroups: false,
-      entrypoints: false,
       errors: true,
-      errorDetails: false,
-      errorStack: false,
-      hash: false,
       logging: "none",
-      modules: false,
-      publicPath: false,
       timings: true,
-      version: false,
       warnings: true,
     })
   );
