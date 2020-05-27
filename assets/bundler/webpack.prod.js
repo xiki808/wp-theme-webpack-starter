@@ -53,7 +53,7 @@ module.exports = {
       cacheGroups: {
         // Split vendor code to its own chunk(s)
         vendors: {
-          name: "vendor",
+          name: "js/vendor",
           chunks: "all",
           test: /[\\/]node_modules[\\/]/i,
         },
@@ -63,7 +63,7 @@ module.exports = {
     // This saves some common JS since we have multiple entries
     // runtimeChunk is the webpack JS code used to load modules
     runtimeChunk: {
-      name: "runtime",
+      name: "js/runtime",
     },
   },
   plugins: [

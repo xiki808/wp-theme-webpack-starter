@@ -9,12 +9,12 @@ module.exports = {
   entries: [
     // target: The entry file path relative to the 'assetsTargetFolder'
     // source: The source file path relative to the bundler directory
-    { target: "front/styles/style", source: "../front/styles/style.scss" },
-    { target: "front/scripts/header", source: "../front/scripts/header.js" },
-    { target: "front/scripts/footer", source: "../front/scripts/footer.js" },
-    { target: "back/styles/style", source: "../back/styles/style.scss" },
-    { target: "back/scripts/header", source: "../back/scripts/header.js" },
-    { target: "back/scripts/footer", source: "../back/scripts/footer.js" },
+    { target: "css/front/style", source: "../scss/front/style.scss" },
+    { target: "js/front/header", source: "../js/front/header.js" },
+    { target: "js/front/footer", source: "../js/front/footer.js" },
+    { target: "css/back/style", source: "../scss/back/style.scss" },
+    { target: "js/back/header", source: "../js/back/header.js" },
+    { target: "js/back/footer", source: "../js/back/footer.js" },
   ],
   imagesPublicFolder: "images/", // The public and target folder for image assets, public path is relative to 'assetsPublicFolder'
   fontsPublicFolder: "fonts/", // The public and target folder for fonts assets, public path is relative to 'assetsPublicFolder'
