@@ -75,6 +75,8 @@ module.exports = {
   plugins: [
     // Clean the JS file created by MiniCssExtractPlugin after extracting CSS
     // Keep for development mode to allow SCSS HMR
-    new FixStyleOnlyEntriesPlugin(),
+    new FixStyleOnlyEntriesPlugin({
+      silent: true,
+    }),
   ],
 };
