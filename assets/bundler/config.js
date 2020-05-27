@@ -25,8 +25,11 @@ module.exports = {
   watchFiles: ["../../**/*.php", "!../../assets"], // Files BrowserSync will watch. Use '!' to exclude.
   // Aliases set for a module will be available in the JS file without the need to import.
   moduleAlias: {
-    // Example -  _: "lodash",
+    // Examples:
+    // _: "lodash",
+    // $: "jquery",
   },
+  // Used to arrange the 'entries' array to fit in webpack config
   getEntries: (entries, hmrPathParams = "", dev = false) => {
     let entryList = {};
 
